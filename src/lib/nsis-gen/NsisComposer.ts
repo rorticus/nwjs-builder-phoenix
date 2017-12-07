@@ -5,6 +5,8 @@ import { readdir, lstat } from 'fs-extra';
 
 import { fixWindowsVersion } from '../util';
 
+import { readFileSync } from 'fs';
+
 export interface INsisComposerOptions {
 
     // Basic.
@@ -28,6 +30,9 @@ export interface INsisComposerOptions {
     // Output.
     output: string;
 
+    // Extra scripts
+    postInstallScript: string;
+    postUninstallScript: string;
 }
 
 export class NsisComposer {
@@ -264,8 +269,26 @@ ${ await this.makeInstallerFiles() }
 !insertmacro MUI_STARTMENU_WRITE_END
 
   WriteUninstaller "$INSTDIR\\Uninstall.exe"
+  
+  ${ this.includePostInstallScript() }
 
 SectionEnd`;
+    }
+
+    protected includePostInstallScript(): string {
+        if (this.options.postInstallScript) {
+            return readFileSync(this.options.postInstallScript).toString();
+        } else {
+            return '';
+        }
+    }
+
+    protected includePostUninstallScript(): string {
+        if (this.options.postUninstallScript) {
+            return readFileSync(this.options.postUninstallScript).toString();
+        } else {
+            return '';
+        }
     }
 
     protected async makeUninstallSection(): Promise<string> {
@@ -289,6 +312,8 @@ RMDir "$SMPROGRAMS\\$StartMenuFolder"
 Delete "$DESKTOP\\\${_APPNAME}.lnk"
 
 DeleteRegKey HKCU "Software\\\${_APPNAME}"
+
+${ this.includePostInstallScript() }
 
 SectionEnd`;
     }

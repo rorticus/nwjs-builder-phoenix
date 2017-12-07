@@ -11,6 +11,9 @@ export class NsisConfig {
     public diffUpdaters: boolean = false;
     public hashCalculation: boolean = true;
 
+    public postInstallScript: string = undefined;
+    public postUninstallScript: string = undefined;
+
     constructor(options: any = {}) {
 
         Object.keys(this).map((key) => {

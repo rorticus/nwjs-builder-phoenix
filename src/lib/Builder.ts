@@ -515,6 +515,9 @@ export class Builder {
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
 
+            postInstallScript: config.nsis.postInstallScript ? resolve(this.dir, config.nsis.postInstallScript) : undefined,
+            postUninstallScript: config.nsis.postUninstallScript ? resolve(this.dir, config.nsis.postUninstallScript) : undefined,
+
             // Compression.
             compression: 'lzma',
             solid: true,
@@ -645,6 +648,9 @@ export class Builder {
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
 
+            postInstallScript: config.nsis.postInstallScript ? resolve(this.dir, config.nsis.postInstallScript) : undefined,
+            postUninstallScript: config.nsis.postUninstallScript ? resolve(this.dir, config.nsis.postUninstallScript) : undefined,
+
             // Compression.
             compression: 'lzma',
             solid: true,
@@ -709,6 +715,9 @@ export class Builder {
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
+
+            postInstallScript: config.nsis.postInstallScript ? resolve(this.dir, config.nsis.postInstallScript) : undefined,
+            postUninstallScript: config.nsis.postUninstallScript ? resolve(this.dir, config.nsis.postUninstallScript) : undefined,
 
             // Compression.
             compression: 'lzma',
