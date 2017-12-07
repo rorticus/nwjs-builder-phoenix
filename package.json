@@ -3,10 +3,6 @@
   "version": "1.14.6",
   "description": "",
   "main": "./dist/lib/index.js",
-  "bin": {
-    "build": "./dist/bin/build.js",
-    "run": "./dist/bin/run.js"
-  },
   "scripts": {
     "prepublish": "npm run build",
     "test": "npm run build && ava",
