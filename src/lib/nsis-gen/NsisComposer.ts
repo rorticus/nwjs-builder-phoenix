@@ -313,7 +313,7 @@ Delete "$DESKTOP\\\${_APPNAME}.lnk"
 
 DeleteRegKey HKCU "Software\\\${_APPNAME}"
 
-${ this.includePostInstallScript() }
+${ this.includePostUninstallScript() }
 
 SectionEnd`;
     }
